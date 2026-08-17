@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public static InputManager inputManager;
-
+    public static CameraMount currentMount;
+    public static Player player;
     void Start()
     {
         if (instance == null) instance = this;

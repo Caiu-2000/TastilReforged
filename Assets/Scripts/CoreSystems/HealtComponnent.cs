@@ -10,10 +10,15 @@ public class HealtComponnent :  ITimable
 
     public bool DamageInCD = false;
     public float DamageCD = 0.2f;
+
+    public delegate void DamageApplied(float currentLife, float maxLife);
+    public DamageApplied OnDamaged = delegate { };
+
     public HealtComponnent(float max) 
     {
         MaxLife = max;
         CurrentLife = MaxLife;
+
     }
     public float Damage(float dam , bool IgnoreCD = false)
     {

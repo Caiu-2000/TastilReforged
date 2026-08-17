@@ -22,6 +22,7 @@ public class InputManager : MonoBehaviour
     public delegate void UseAction();
     public delegate void Parry();
     public delegate void Interact();
+    public delegate void MoveInput(Vector2 Dir);
 
     public AttacksDelegate OnAttackPressed = delegate { };
     public AttacksDelegate OnAttackReleased = delegate { };
@@ -35,8 +36,7 @@ public class InputManager : MonoBehaviour
 
     public Parry OnParryPressed = delegate { };
     public Interact OnInteractPressed = delegate { };
-    // Este todavia no se usa pero ya queda aca
-    // public UseAction OnUseReleased = delegate { };
+    public MoveInput OnMoveInput = delegate { };
 
     private void Awake()
     {
@@ -55,11 +55,6 @@ public class InputManager : MonoBehaviour
 
         _SpecialAction = InputSystem.actions.FindAction("RigthClick");
 
-        /*
-        UnityEngine.Cursor.visible = false;
-        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-        */
-
 
     }
     private void Start()
@@ -71,6 +66,7 @@ public class InputManager : MonoBehaviour
     {
 
         _dir = _movementAction.ReadValue<Vector2>();
+        OnMoveInput?.Invoke(_dir);
         if (_interactAction.WasPressedThisFrame())
         {
             OnInteractPressed?.Invoke();
