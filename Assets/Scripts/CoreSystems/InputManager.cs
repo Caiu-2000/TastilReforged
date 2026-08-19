@@ -53,7 +53,7 @@ public class InputManager : MonoBehaviour
         _parryAction = InputSystem.actions.FindAction("Parry");
         _useItemAction = InputSystem.actions.FindAction("UseItem");
 
-        _SpecialAction = InputSystem.actions.FindAction("RigthClick");
+        _SpecialAction = InputSystem.actions.FindAction("SpecialAction");
 
 
     }

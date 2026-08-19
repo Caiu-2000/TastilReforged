@@ -15,6 +15,7 @@ public class MovementComponnent : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
     }
+ 
     private void FixedUpdate()
     {
         // Con esto saco el frente del personaje para que el frente sea donde mira
@@ -39,10 +40,12 @@ public class MovementComponnent : MonoBehaviour
             _rb.linearVelocity.y,
             CurrentVelocity.y  
         );
+        print("CurrentVelocity: " + CurrentVelocity + " targetVelocity : " + targetVelocity);
     }
 
     public void SetDirection(Vector2 Direction)
     {
+        print("Direction: " + Direction);
         DesiredDirection = Direction.normalized;
     }
     

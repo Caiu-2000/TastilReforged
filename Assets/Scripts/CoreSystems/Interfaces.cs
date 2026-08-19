@@ -7,3 +7,8 @@ public interface ITimable
 {
     public void TimeStopped();
 }
+
+public interface IPhysicUpdater
+{
+    public void PysicsUpdate();
+}
