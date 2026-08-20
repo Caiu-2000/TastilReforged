@@ -7,8 +7,8 @@ public class MovementComponnent : MonoBehaviour
     [SerializeField] private float Acceleration = 1.0f;
     [SerializeField] private float Deceleration = 1.0f;
 
-    private Vector2 CurrentVelocity;
-    private Vector2 DesiredDirection;
+    private Vector3 CurrentVelocity;
+    private Vector3 DesiredDirection;
 
 
     private void Start()
@@ -18,35 +18,40 @@ public class MovementComponnent : MonoBehaviour
  
     private void FixedUpdate()
     {
-        // Con esto saco el frente del personaje para que el frente sea donde mira
-        Vector3 localTargetVelocity = (transform.forward * DesiredDirection.y + transform.right * DesiredDirection.x);
-        
-        Vector2 targetVelocity = DesiredDirection * MaxSpeed * localTargetVelocity;
-        // Este codigo lo saque con ia para poder ahorrar el tipear.
-        // Con esto se puede acelerar y desacelerar las entidades que se muevan
-      
-        float rate = (DesiredDirection.magnitude > 0) ? Acceleration : Deceleration;
 
+        Vector3 targetVelocity = new Vector3();
+        targetVelocity = (transform.forward * DesiredDirection.z + transform.right * DesiredDirection.x ) * MaxSpeed ;
   
-        CurrentVelocity = Vector2.MoveTowards(
+  
+        float rate;
+        if (DesiredDirection.magnitude > 0)
+        {
+            rate = Acceleration;
+        }
+        else
+        {
+            rate = Deceleration * Time.fixedDeltaTime;
+        }
+      
+        CurrentVelocity = Vector3.Lerp(
             CurrentVelocity,
-            CurrentVelocity,
-            rate * Time.fixedDeltaTime
+            targetVelocity,
+            rate 
         );
 
         
         _rb.linearVelocity = new Vector3(
             CurrentVelocity.x,
             _rb.linearVelocity.y,
-            CurrentVelocity.y  
+            CurrentVelocity.z  
         );
-        print("CurrentVelocity: " + CurrentVelocity + " targetVelocity : " + targetVelocity);
+
     }
 
-    public void SetDirection(Vector2 Direction)
+    public void SetDesiredDirection(Vector2 Direction)
     {
-        print("Direction: " + Direction);
-        DesiredDirection = Direction.normalized;
+        DesiredDirection = new Vector3(Direction.x , DesiredDirection.y, Direction.y).normalized;
+        
     }
     
 

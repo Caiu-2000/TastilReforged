@@ -9,7 +9,7 @@ public class Player : Entity
     {
         MoveComp = GetComponent<MovementComponnent>();
         GameManager.player = this;
-        GameManager.inputManager.OnMoveInput += MoveComp.SetDirection;
+        GameManager.inputManager.OnMoveInput += MoveComp.SetDesiredDirection;
     }
 
 
