@@ -10,11 +10,11 @@ public class MovementComponnent : MonoBehaviour
     private Vector3 CurrentVelocity;
     private Vector3 DesiredDirection;
 
-
-    private void Start()
+    private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
     }
+
  
     private void FixedUpdate()
     {

@@ -864,7 +864,7 @@ MonoBehaviour:
     sounds: []
     AudioAlbum: []
     AudioMixerGroup: {fileID: 0}
-  MoveComp: {fileID: 1030937827}
+  MoveComp: {fileID: 0}
 --- !u!114 &1030937827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -874,12 +874,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1030937822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09e61e1221df0914e8547b65256d0241, type: 3}
+  m_Script: {fileID: 11500000, guid: f02929a779460da429c593d2771fd353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 15
+  MaxSpeed: 10
   Acceleration: 10
-  Deceleration: 13
+  Deceleration: 15
+  CamMount: {fileID: 977615398}
 --- !u!1 &1192757402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,7 +1080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afa82ae3200b82408d605c3dbdd1e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damping: 0.1
+  Damping: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -37,6 +37,11 @@ public class InputManager : MonoBehaviour
     public Parry OnParryPressed = delegate { };
     public Interact OnInteractPressed = delegate { };
     public MoveInput OnMoveInput = delegate { };
+    // Evento con movimiento de camara
+    public delegate void LookInput(Vector2 Dir);
+    public event LookInput OnLookInput = delegate { };
+
+
 
     private void Awake()
     {
@@ -73,8 +78,9 @@ public class InputManager : MonoBehaviour
         }
 
         Vector2 lookDir = _lookAction.ReadValue<Vector2>();
+        if (lookDir != Vector2.zero) OnLookInput?.Invoke(lookDir);
 
-            if (_attackAction.WasPressedThisFrame())
+        if (_attackAction.WasPressedThisFrame())
             {
 
                 OnAttackPressed?.Invoke();
