@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static InputManager inputManager;
     public static CameraMount currentMount;
     public static Player player;
+    public static UiManager Ui;
     void Start()
     {
         if (instance == null) instance = this;

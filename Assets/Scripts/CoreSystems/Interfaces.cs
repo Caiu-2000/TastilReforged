@@ -15,7 +15,7 @@ public interface IPhysicUpdater
 
 public interface IInteractable
 {
-    string Message { get; }
+    public string Message { get; }
     
 
     // Asi se tiene que implementar
