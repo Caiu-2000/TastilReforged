@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : Entity
 {
     [SerializeField] protected MovementComponnent MoveComp;
+    [SerializeField] protected InventoryComponnent Inventory;
     void Start()
     {
         MoveComp = GetComponent<MovementComponnent>();

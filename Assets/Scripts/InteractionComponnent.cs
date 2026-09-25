@@ -1,9 +1,15 @@
 using UnityEngine;
 
+[DefaultExecutionOrder(-4)]
 public class InteractionComponnent : MonoBehaviour
 {
     [SerializeField] private LayerMask InteractableMask;
     private IInteractable InteractableOnSight;
+
+    private void Start()
+    {
+        GameManager.inputManager.OnInteractPressed += InteractPressed;
+    }
 
     void Update()
     {
@@ -37,6 +43,14 @@ public class InteractionComponnent : MonoBehaviour
 
 
 
+        }
+    }
+
+    public void InteractPressed()
+    {
+        if (InteractableOnSight != null)
+        {
+            InteractableOnSight.Interact();
         }
     }
 }

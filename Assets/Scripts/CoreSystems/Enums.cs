@@ -1,6 +1,4 @@
 
-
-
 public enum SoundTypes
 {
     None = 0,
@@ -10,9 +8,15 @@ public enum SoundTypes
     Death = 4
 }
 
-
 public enum AttackType
 {
     Basic,
     Special
+}
+
+public enum ItemTypes
+{
+    Weapon,
+    Consumable,
+    Trowable
 }

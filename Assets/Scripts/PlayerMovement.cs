@@ -19,8 +19,8 @@ public class PlayerMovement : MovementComponnent
         _rotationX += LookInput.y * -rotationspeed * Time.deltaTime;
         _rotationX = Mathf.Clamp(_rotationX, -90f, 90f);
 
-        // Esta mierda lo reseteaba y no lo dejaba rotar 
-        CamMount.rotation = Quaternion.Euler(_rotationX, rotationY, 0f);
+
+        CamMount.localRotation = Quaternion.Euler(_rotationX, 0f, 0f);
         
     }
 }

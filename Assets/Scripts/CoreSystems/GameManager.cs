@@ -19,7 +19,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public IEnumerator UniversalTimer(float time , ITimable Caller)
+    public void UniversalTimer(float time , ITimable Caller)
+    {
+        StartCoroutine(BasicTimer(time , Caller));
+    }
+    private IEnumerator BasicTimer(float time , ITimable Caller)
     {
         yield return new WaitForSeconds(time);
         Caller.TimeStopped();

@@ -65,6 +65,7 @@ public class InputManager : MonoBehaviour
     private void Start()
     {
         GameManager.inputManager = this;
+        BlockMouse();
     }
 
     private void Update()
@@ -139,7 +140,16 @@ public class InputManager : MonoBehaviour
             }
         }
     }
-
+    public void BlockMouse()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+    public void ShowCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
 
 }
 
