@@ -4,7 +4,7 @@ using UnityEngine;
 public class RoomSO : ScriptableObject
 {
     public Room roomPrefab;
-    public Room[] nextRoom;
-    public bool isFirstRoom;
+    public RoomSO[] nextRooms;
     public bool hasMultipleExits;
+
 }

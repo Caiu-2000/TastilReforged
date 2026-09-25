@@ -16,16 +16,16 @@ public class MobSpawner : MonoBehaviour
     {
         
     }
-    public List<Enemy> SpawnEnemies()
+    public int SpawnEnemies()
     {
-        List<Enemy> list = new List<Enemy>();
+        int numberOfEnemiesSpawned = 0;
         foreach(Enemy enemy in enemies)
         {
             int randomSpawner = Random.Range(0, spawnPoints.Length);
             Enemy enemySpawned =Instantiate(enemy, spawnPoints[randomSpawner].position, Quaternion.identity);
-            list.Add(enemySpawned);
+            numberOfEnemiesSpawned++;
         }
-        return list;
+        return numberOfEnemiesSpawned;
     }
 
 

@@ -1,17 +1,21 @@
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : MonoBehaviour, IInteractable
 {
+    int currentLevel = 0;
+    [SerializeField] RoomSO roomTree;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public string Message => throw new System.NotImplementedException();
+    private void Awake()
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Interact()
     {
-        
+        throw new System.NotImplementedException();
+    }
+    public void CreateNextRoom()
+    {
+
     }
 }
