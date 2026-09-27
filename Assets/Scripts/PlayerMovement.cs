@@ -23,4 +23,5 @@ public class PlayerMovement : MovementComponnent
         CamMount.localRotation = Quaternion.Euler(_rotationX, 0f, 0f);
         
     }
+ 
 }

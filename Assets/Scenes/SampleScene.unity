@@ -1052,6 +1052,7 @@ MonoBehaviour:
   MoveComp: {fileID: 0}
   Inventory:
     InventorySlots: 2
+  camBrain: {fileID: 1222617468}
 --- !u!114 &1030937827
 MonoBehaviour:
   m_ObjectHideFlags: 0

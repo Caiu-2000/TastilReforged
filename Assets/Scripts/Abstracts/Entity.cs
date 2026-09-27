@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Entity : MonoBehaviour , IHittable
+public class Entity : MonoBehaviour , IHittable 
 {
 
     [SerializeField] protected HealtComponnent healtComponnent;

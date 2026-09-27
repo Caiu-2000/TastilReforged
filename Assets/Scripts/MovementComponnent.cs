@@ -1,6 +1,9 @@
+
+using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementComponnent : MonoBehaviour
+
+public class MovementComponnent : MonoBehaviour , IObservable<movementData>
 {
     private Rigidbody _rb;
     [SerializeField] private float MaxSpeed = 2.0f;
@@ -9,6 +12,8 @@ public class MovementComponnent : MonoBehaviour
 
     private Vector3 CurrentVelocity;
     private Vector3 DesiredDirection;
+
+    protected List<IObserver<movementData>> observers = new List<IObserver<movementData>>();
 
     private void Awake()
     {
@@ -32,6 +37,9 @@ public class MovementComponnent : MonoBehaviour
         {
             rate = Deceleration * Time.fixedDeltaTime;
         }
+
+       
+    
       
         CurrentVelocity = Vector3.Lerp(
             CurrentVelocity,
@@ -46,6 +54,13 @@ public class MovementComponnent : MonoBehaviour
             CurrentVelocity.z  
         );
 
+        movementData data = new movementData(CurrentVelocity);
+        foreach (var item in observers)
+        {
+            item.Notify(data);
+
+        }
+
     }
 
     public void SetDesiredDirection(Vector2 Direction)
@@ -54,5 +69,23 @@ public class MovementComponnent : MonoBehaviour
         
     }
     
+    public void Suscribe(IObserver<movementData> observer)
+    {
+        observers.Add(observer);
+    }
 
+    public void UnSuscribe(IObserver<movementData> observer)
+    {
+        observers.Remove(observer);
+    }
 }
+
+public struct movementData
+{
+    public Vector3 velocity;
+    public movementData(Vector3 vel)
+    {
+        this.velocity = vel;
+    }
+}
+
